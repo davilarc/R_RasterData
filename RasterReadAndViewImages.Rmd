@@ -42,4 +42,28 @@ hist(img, main = 'Distribution of pixel values', col = 'purple', maxpixels = nce
 
 ### Loading multiple bands
 
+```{r}
+
+# create the list of source files containg landsat 7 bands
+landsat <- paste0('./data/LC09_L2SP_196025_20221206_20221208_02_T2_SR_B',
+                  1:7,
+                  '.tif')
+
+# display the list created above
+landsat
+
+# create raster stack
+landsat_stack <- stack(landsat)
+
+# display the attributes of the created raster stack
+landsat_stack
+
+# create raster brick from the stacked layer
+landsat_brick <- brick(landsat_stack)
+
+# display the attributes of the raster brick
+landsat_brick
+
+```
+
 

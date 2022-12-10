@@ -389,6 +389,45 @@ hist(img, main = &#39;Distribution of pixel values&#39;, col = &#39;purple&#39;,
 </div>
 <div id="loading-multiple-bands" class="section level3">
 <h3>Loading multiple bands</h3>
+<pre class="r"><code># create the list of source files containg landsat 7 bands
+landsat &lt;- paste0(&#39;./data/LC09_L2SP_196025_20221206_20221208_02_T2_SR_B&#39;,
+                  1:7,
+                  &#39;.tif&#39;)
+
+# display the list created above
+landsat</code></pre>
+<pre><code>## [1] &quot;./data/LC09_L2SP_196025_20221206_20221208_02_T2_SR_B1.tif&quot;
+## [2] &quot;./data/LC09_L2SP_196025_20221206_20221208_02_T2_SR_B2.tif&quot;
+## [3] &quot;./data/LC09_L2SP_196025_20221206_20221208_02_T2_SR_B3.tif&quot;
+## [4] &quot;./data/LC09_L2SP_196025_20221206_20221208_02_T2_SR_B4.tif&quot;
+## [5] &quot;./data/LC09_L2SP_196025_20221206_20221208_02_T2_SR_B5.tif&quot;
+## [6] &quot;./data/LC09_L2SP_196025_20221206_20221208_02_T2_SR_B6.tif&quot;
+## [7] &quot;./data/LC09_L2SP_196025_20221206_20221208_02_T2_SR_B7.tif&quot;</code></pre>
+<pre class="r"><code># create raster stack
+landsat_stack &lt;- stack(landsat)
+
+# display the attributes of the created raster stack
+landsat_stack</code></pre>
+<pre><code>## class      : RasterStack 
+## dimensions : 8061, 7991, 64415451, 7  (nrow, ncol, ncell, nlayers)
+## resolution : 30, 30  (x, y)
+## extent     : 277185, 516915, 5449485, 5691315  (xmin, xmax, ymin, ymax)
+## crs        : +proj=utm +zone=32 +datum=WGS84 +units=m +no_defs 
+## names      : LC09_L2SP//2_T2_SR_B1, LC09_L2SP//2_T2_SR_B2, LC09_L2SP//2_T2_SR_B3, LC09_L2SP//2_T2_SR_B4, LC09_L2SP//2_T2_SR_B5, LC09_L2SP//2_T2_SR_B6, LC09_L2SP//2_T2_SR_B7</code></pre>
+<pre class="r"><code># create raster brick from the stacked layer
+landsat_brick &lt;- brick(landsat_stack)
+
+# display the attributes of the raster brick
+landsat_brick</code></pre>
+<pre><code>## class      : RasterBrick 
+## dimensions : 8061, 7991, 64415451, 7  (nrow, ncol, ncell, nlayers)
+## resolution : 30, 30  (x, y)
+## extent     : 277185, 516915, 5449485, 5691315  (xmin, xmax, ymin, ymax)
+## crs        : +proj=utm +zone=32 +datum=WGS84 +units=m +no_defs 
+## source     : r_tmp_2022-12-09_192021_16004_78597.grd 
+## names      : LC09_L2SP//2_T2_SR_B1, LC09_L2SP//2_T2_SR_B2, LC09_L2SP//2_T2_SR_B3, LC09_L2SP//2_T2_SR_B4, LC09_L2SP//2_T2_SR_B5, LC09_L2SP//2_T2_SR_B6, LC09_L2SP//2_T2_SR_B7 
+## min values :                     1,                     1,                     1,                     1,                     2,                  4856,                  7166 
+## max values :                 65454,                 65454,                 65454,                 65454,                 65454,                 65454,                 57720</code></pre>
 </div>
 
 
