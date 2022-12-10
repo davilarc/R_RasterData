@@ -36,7 +36,7 @@ img
 plot(img)
 
 # histogram of the raster image
-hist(img, main = 'Distribution of pixel values', col = 'purple', maxpixels = ncell(img))
+hist(img, main='Distribution of pixel values', col='purple', maxpixels=ncell(img))
 
 ```
 
@@ -66,4 +66,13 @@ landsat_brick
 
 ```
 
+### Attributes of the loaded raster layer
 
+```{r}
+# display number of cells
+ncell(landsat_brick)
+
+# display number of bands in the image
+nlayers(landsat_brick)
+
+```
