@@ -1,0 +1,45 @@
+---
+title: "Raster Data"
+author: "Rick Davila"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Load necessary packages
+
+For loading the raster data *raster* package
+
+```{r}
+library(raster)
+```
+
+### Load a single band raster
+
+```{r}
+# load a single band
+img <- raster('./data/LC09_L2SP_196025_20221206_20221208_02_T2_SR_B1.tif')
+
+# display the attributes of the loaded raster
+img
+```
+
+### Plot a single band
+
+```{r}
+# plot a single band
+plot(img)
+
+# histogram of the raster image
+hist(img, main = 'Distribution of pixel values', col = 'purple', maxpixels = ncell(img))
+
+```
+
+### Loading multiple bands
+
+
